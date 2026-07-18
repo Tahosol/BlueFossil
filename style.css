@@ -134,7 +134,7 @@ body {
 .popup-text ul {
     margin: 5px;
     padding-left: 1.25rem;
-    list-style-position: inside;
+    list-style-position: outside;
 }
 
 .card p {
@@ -216,8 +216,8 @@ body {
 }
 .notabackronym {
     position: absolute;
-    top: 1rem;
-    right: 2rem;
+    top: 2%;
+    right: 2%;
     margin: 0;
     transform: rotate(30deg);
     animation: fade 20s ease-in-out infinite;
@@ -254,13 +254,4 @@ body {
                 0 0 20px rgba(236, 239, 244, 0.15),
                 0 0 35px rgba(236, 239, 244, 0.28);
   }
-}
-.mountain-range {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  pointer-events: none;
 }
