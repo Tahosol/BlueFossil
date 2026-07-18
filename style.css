@@ -33,8 +33,18 @@
     box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "CommitMono Nerd Font";
+  src: url("/fonts/CommitMono\ VariableFont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
     display: flex;
+    font-family: "CommitMono Nerd Font", monospace;
+    font-size: 13.5px;
     justify-content: center;
     padding: 1rem;
     background: var(--nord-0);
@@ -143,8 +153,8 @@ body {
 
 .logo-container {
     display: flex;
-    padding-bottom: 4px;
-    margin-bottom: 2px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .logo {
@@ -216,8 +226,8 @@ body {
 }
 .notabackronym {
     position: absolute;
-    top: 2%;
-    right: 2%;
+    top: 1%;
+    right: 1%;
     margin: 0;
     transform: rotate(30deg);
     animation: fade 20s ease-in-out infinite;
