@@ -151,7 +151,8 @@ body {
     padding-right: 2px;
     margin-right: 2px;
     border-radius: 8px;
-    width: 50px;
+    width: 64px;
+    height: 64px;
 }
 .rating {
     color: var(--nord-yel-13);
