@@ -31,7 +31,7 @@ export const apps = [
         name: "Lune",
         description: "Modern open source local music player for Android.",
         category: Category.MUSICPLAYER,
-        rating: 5,
+        rating: 4.5,
         pros: ["Good UI", "Good lyrics support", "Material design", "Good playlist support"],
         cons: ["UX is a bit strange"],
         platform: [Platform.ANDROID],
