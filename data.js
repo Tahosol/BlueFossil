@@ -5,6 +5,8 @@ export var Category;
     Category["BROWSER"] = "Browser";
     Category["ONLINEMUSIC"] = "Music Service";
     Category["FIREWALL"] = "Firewall";
+    Category["GAME"] = "Game";
+    Category["APPSTORE"] = "App store";
 })(Category || (Category = {}));
 export const apps = [
     {
@@ -59,6 +61,42 @@ export const apps = [
         pros: ["Material UI", "Good Lyrics support"],
         cons: ["Broken playlist support"],
         url: "https://f-droid.org/en/packages/org.akanework.gramophone/",
+        rating: 4,
+    },
+    {
+        name: "Shattered Pixel Dungeon",
+        description: "A roguelike game based on Pixel Dungeon.",
+        category: Category.GAME,
+        pros: ["It is a foss game", "It is fun"],
+        cons: ["Can be a bit hard"],
+        url: "https://github.com/00-Evan/shattered-pixel-dungeon",
+        rating: 5,
+    },
+    {
+        name: "F-Droid Basic",
+        description: "The minimal client app for the app store that respects freedom and privacy.",
+        category: Category.APPSTORE,
+        pros: ["Material UI", "More secure than the normal F-Droid client", "Official client"],
+        cons: ["Current 2.0-alpha11 does not have permission metadata"],
+        url: "https://f-droid.org/en/packages/org.fdroid.basic/",
+        rating: 4.5,
+    },
+    {
+        name: "Droid-ify",
+        description: "Clutterfree F-Droid client.",
+        category: Category.APPSTORE,
+        pros: ["Material UI", "Have a list of repo"],
+        cons: ["Bad UX(navigator on top)"],
+        url: "https://f-droid.org/en/packages/com.looker.droidify/",
+        rating: 4.5,
+    },
+    {
+        name: "Aurora Store",
+        description: "An unofficial FOSS client to Google Play with an elegant design and privacy.",
+        category: Category.APPSTORE,
+        pros: ["Material UI", "shizuku support"],
+        cons: ["Can be slow/buggy", "Depends on the Google Play Store servers"],
+        url: "https://f-droid.org/en/packages/com.aurora.store/",
         rating: 4,
     },
 ];
