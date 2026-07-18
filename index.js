@@ -152,20 +152,22 @@ function capitalizeFirstLetter(val) {
 function renderCards(appList, query, cat) {
     if (!grid)
         return;
-    grid.innerHTML = "";
+    const fragment = document.createDocumentFragment();
     const q = query?.toLowerCase() ?? "";
     const selectedCat = cat ?? "ALL";
     console.log(`${q}: ${selectedCat}`);
     appList.forEach(app => {
         if (app.name.toLowerCase().includes(q)) {
             if (app.category === Category[selectedCat]) {
-                grid.appendChild(createCard(app));
+                fragment.appendChild(createCard(app));
             }
             else if (selectedCat === "ALL") {
-                grid.appendChild(createCard(app));
+                fragment.appendChild(createCard(app));
             }
         }
     });
+    grid.innerHTML = "";
+    grid.appendChild(fragment);
 }
 renderCards(apps, "", "ALL");
 addCategory(Category);

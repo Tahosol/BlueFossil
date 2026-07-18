@@ -179,8 +179,7 @@ function capitalizeFirstLetter(val: string) {
 
 function renderCards(appList: App[], query?: string, cat?: string): void {
   if (!grid) return;
-
-  grid.innerHTML = "";
+  const fragment = document.createDocumentFragment();
 
   const q = query?.toLowerCase() ?? "";
   const selectedCat = cat ?? "ALL";
@@ -189,12 +188,14 @@ function renderCards(appList: App[], query?: string, cat?: string): void {
   appList.forEach(app => {
     if (app.name.toLowerCase().includes(q)) {
       if (app.category === Category[selectedCat as keyof typeof Category]) {
-        grid.appendChild(createCard(app));
+        fragment.appendChild(createCard(app));
       } else if (selectedCat === "ALL") {
-        grid.appendChild(createCard(app));
+        fragment.appendChild(createCard(app));
       }
     }
   });
+  grid.innerHTML = "";
+  grid.appendChild(fragment);
 }
 
 renderCards(apps, "","ALL");
