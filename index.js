@@ -60,7 +60,7 @@ function setup_goto_and_platform(app, goto, platform) {
     goto.addEventListener("click", () => {
         window.open(app.url, '_blank')?.focus();
     });
-    app.platform.sort().forEach(pl => {
+    [...app.platform].sort().forEach(pl => {
         switch (pl) {
             case Platform.ANDROID: {
                 let icon_box = document.createElement("div");

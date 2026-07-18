@@ -182,7 +182,6 @@ body {
 }
 .platform > .android {
     color: var(--nord-gre-14);
-    size: 2px;
 }
 .platform > .ios {
     color: var(--nord-4);
