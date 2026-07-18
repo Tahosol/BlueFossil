@@ -97,23 +97,22 @@ body {
     max-width:450px;
     overflow: visible;
 }
-.card:hover {
+/*.card:hover {
     transform: scale(1.02);
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
+}*/
 
 .card h3 {
     margin-bottom: 0.5rem;
     color: var(--text-light);
 }
 
-.more-btn {
+.card button {
     background-color: var(--nord-0);
     color: var(--text-light);
     margin-top: 0.75rem;
-    margin-left: 0.75rem;
-    padding: 0.4rem 0.7rem;
+    padding: 0.4rem 0.4rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -165,8 +164,40 @@ body {
     height: 64px;
 }
 .rating {
+    margin-top: 0.75rem;
     color: var(--nord-yel-13);
 }
+
+.platform {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--nord-0);
+    border-radius: 10px;
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
+}
+.platform > div {
+    margin-right: 0.2rem;
+}
+.platform > .android {
+    color: var(--nord-gre-14);
+    size: 2px;
+}
+.platform > .ios {
+    color: var(--nord-4);
+}
+.platform > .macos {
+    color: var(--nord-5);
+}
+.platform > .windows {
+    color: var(--nord-9);
+}
+.platform > .linux {
+    color: var(--nord-ora-12);
+}
+
+
 
 .category {
     background: var(--nord-10);

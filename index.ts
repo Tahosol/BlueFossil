@@ -1,5 +1,5 @@
 import { Category, apps } from "./data.js";
-import type { App } from "./data.js";
+import { App, Platform } from "./data.js";
 
 const grid = document.getElementById("cardGrid") as HTMLDivElement | null;
 const searchInput = document.getElementById("input") as HTMLInputElement | null;
@@ -41,15 +41,102 @@ function createCard(app: App): HTMLDivElement {
       </div>
     </div>
     <p>${escapeHtml(app.description)}</p>
-    <span class="rating" id="${escapeHtml(app.name)}rate">
+    <div class="rating" id="${escapeHtml(app.name)}rate">
       ${`<i class="fas fa-star"></i>`.repeat(fullStars)}${hasHalfStar ? `<i class="fas fa-star-half-stroke"></i>` : ""}
-    </span>
-    <button class="more-btn" type="button">Show more</button>
-    <div class="popup-text" hidden>
     </div>
+    <div>
+        <button class="more-btn" type="button">Show more</button>
+        <button class="goto" type="button">Go to</button>
+        </span>
+        <div class="popup-text" hidden>
+        </div>
+    </div>
+    <div class="platform"></div>
   `;
-  const btn = card.querySelector(".more-btn") as HTMLButtonElement;
-  const popup = card.querySelector(".popup-text") as HTMLDivElement;
+  const btn_show_more = card.querySelector(".more-btn") as HTMLButtonElement;
+  const popup_show_more = card.querySelector(".popup-text") as HTMLDivElement;
+
+  const goto = card.querySelector(".goto") as HTMLButtonElement;
+  const platform = card.querySelector(".platform") as HTMLDivElement;
+
+  setup_goto_and_platform(app, goto, platform);
+  setup_show_more(app, btn_show_more, popup_show_more);
+
+  return card;
+}
+
+function setup_goto_and_platform(app: App, goto: HTMLButtonElement, platform: HTMLDivElement) {
+  goto.title = `go to ${app.url}`;
+  goto.addEventListener("click", () => {
+    window.open(app.url, '_blank')?.focus();
+  });
+  app.platform.sort().forEach(pl => {
+    switch (pl) {
+      case Platform.ANDROID: {
+        let icon_box = document.createElement("div");
+        icon_box.className = "android";
+        icon_box.title = "Android Support";
+
+        let icon = document.createElement("i");
+        icon.className = "fa-solid fa-robot fa-lg";
+
+        icon_box.appendChild(icon)
+        platform.appendChild(icon_box);
+        break;
+      }
+      case Platform.IOS: {
+        let icon_box = document.createElement("div");
+        icon_box.className = "ios";
+        icon_box.title = "IOS Support";
+
+        let icon = document.createElement("i");
+        icon.className = "fa-solid fa-apple-whole fa-lg";
+        icon_box.appendChild(icon);
+
+        platform.appendChild(icon_box);
+        break;
+      }
+      case Platform.LINUX: {
+        let icon_box = document.createElement("div");
+        icon_box.className = "linux";
+        icon_box.title = "Linux Support";
+
+        let icon = document.createElement("i");
+        icon.className = "fa-solid fa-terminal fa-lg";
+        icon_box.appendChild(icon);
+
+        platform.appendChild(icon_box);
+        break;
+      }
+      case Platform.MACOS: {
+        let icon_box = document.createElement("div");
+        icon_box.className = "macos";
+        icon_box.title = "Macos Support";
+
+        let icon = document.createElement("i");
+        icon.className = "fa-solid fa-laptop fa-lg";
+        icon_box.appendChild(icon);
+
+        platform.appendChild(icon_box);
+        break;
+      }
+      case Platform.WINDOWS: {
+        let icon_box = document.createElement("div");
+        icon_box.className = "windows";
+        icon_box.title = "Windows Support";
+
+        let icon = document.createElement("i");
+        icon.className = "fa-solid fa-window-restore fa-lg";
+        icon_box.appendChild(icon);
+
+        platform.appendChild(icon_box);
+        break;
+      }
+    }
+  });
+}
+
+function setup_show_more(app: App, btn: HTMLButtonElement, popup: HTMLDivElement) {
 
   const pros_head = document.createElement("div");
   pros_head.className = "pro-heading";
@@ -82,27 +169,8 @@ function createCard(app: App): HTMLDivElement {
   popup.appendChild(cons);
 
   btn.addEventListener("click", (e) => {
-    e.stopPropagation();
     popup.hidden = !popup.hidden;
   });
-
-  popup.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
-
-  card.addEventListener("click", () => {
-    console.log("Card clicked:", app.name);
-    window.location.assign(app.url);
-  });
-
-  card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      card.click();
-    }
-  });
-
-  return card;
 }
 
 function capitalizeFirstLetter(val: string) {
@@ -132,10 +200,13 @@ function renderCards(appList: App[], query?: string, cat?: string): void {
 renderCards(apps, "","ALL");
 addCategory(Category);
 
+let searchTimer: number | undefined;
+
 searchInput?.addEventListener("input", () => {
-  const query = searchInput.value.trim().toLowerCase();
-  const cat = optionCategory?.value;
-  renderCards(apps, query, cat);
+  clearTimeout(searchTimer);
+  searchTimer = window.setTimeout(() => {
+    renderCards(apps, searchInput.value.trim().toLowerCase(), optionCategory?.value);
+  }, 150);
 });
 
 optionCategory?.addEventListener("change", () => {
