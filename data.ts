@@ -137,7 +137,7 @@ export const apps: App[] = [
     pros: ["Build-in webscraper","optional online account sync"],
     cons: ["UX can be a bit cluttered"],
     url: "https://github.com/prof18/feed-flow",
-    platform: [Platform.ANDROID],
+    platform: [Platform.ANDROID, Platform.IOS, Platform.MACOS, Platform.WINDOWS, Platform.LINUX],
     rating: 4.5,
   },
 ]
