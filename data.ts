@@ -6,6 +6,7 @@ export enum Category {
   FIREWALL = "Firewall",
   GAME = "Game",
   APPSTORE = "App store",
+  RSS = "Feed RSS",
 }
 
 export enum Platform {
@@ -14,6 +15,7 @@ export enum Platform {
   WINDOWS,
   MACOS,
   IOS,
+  WEB,
 }
 
 export type App = {
@@ -127,5 +129,15 @@ export const apps: App[] = [
     url: "https://f-droid.org/en/packages/com.aurora.store/",
     platform: [Platform.ANDROID],
     rating: 4,
+  },
+  {
+    name: "Feedflow",
+    description: "Minimal, fast RSS reading without the clutter.",
+    category: Category.RSS,
+    pros: ["Build-in webscraper","optional online account sync"],
+    cons: ["UX can be a bit cluttered"],
+    url: "https://github.com/prof18/feed-flow",
+    platform: [Platform.ANDROID],
+    rating: 4.5,
   },
 ]

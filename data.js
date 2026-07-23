@@ -7,6 +7,7 @@ export var Category;
     Category["FIREWALL"] = "Firewall";
     Category["GAME"] = "Game";
     Category["APPSTORE"] = "App store";
+    Category["RSS"] = "Feed RSS";
 })(Category || (Category = {}));
 export var Platform;
 (function (Platform) {
@@ -15,6 +16,7 @@ export var Platform;
     Platform[Platform["WINDOWS"] = 2] = "WINDOWS";
     Platform[Platform["MACOS"] = 3] = "MACOS";
     Platform[Platform["IOS"] = 4] = "IOS";
+    Platform[Platform["WEB"] = 5] = "WEB";
 })(Platform || (Platform = {}));
 export const apps = [
     {
@@ -116,5 +118,15 @@ export const apps = [
         url: "https://f-droid.org/en/packages/com.aurora.store/",
         platform: [Platform.ANDROID],
         rating: 4,
+    },
+    {
+        name: "Feedflow",
+        description: "Minimal, fast RSS reading without the clutter.",
+        category: Category.RSS,
+        pros: ["Build-in webscraper", "optional online account sync"],
+        cons: ["UX can be a bit cluttered"],
+        url: "https://github.com/prof18/feed-flow",
+        platform: [Platform.ANDROID],
+        rating: 4.5,
     },
 ];
